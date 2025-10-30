@@ -1,0 +1,55 @@
+Byte-compiled / optimized / DLL files
+
+pycache/
+*.pyc
+*.pyo
+*.pyd
+
+C extensions
+
+*.so
+
+Distribution / packaging
+
+build/
+dist/
+*.egg-info/
+*.egg
+*.whl
+
+Virtual Environments
+
+venv/
+.venv/
+env/
+.env/
+
+Downloaded data (Specific to this project)
+
+------------------------------------------
+
+Ignore the default download folder for gensim models
+
+gensim-data/
+
+Ignore a local nltk_data folder if one gets created
+
+nltk_data/
+
+IDE / Editor directories
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+OS-generated files
+
+.DS_Store
+.DS_Store?
+Thumbs.db
+
+Secrets (Good practice)
+
+*.env
+.env
