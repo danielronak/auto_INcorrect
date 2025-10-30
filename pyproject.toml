@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# The name for PyPI (Python Package Index).
+# Hyphens are standard. This is different from your
+# import name, "auto_incorrect", which is defined by the folder structure.
+name = "auto-incorrect"
+version = "0.0.1"
+authors = [
+  { name = "Ronak Daniel", email = "danielronak8105email.com" },
+]
+description = "A package to intentionally introduce human-like errors into text."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT License" }
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Text Processing",
+]
+
+# This is the most important part:
+# It tells pip what to install alongside your package.
+[project.urls]
+
+[project.dependencies]
+nltk = ">=3.8"
+gensim = ">=4.3"
+```
