@@ -3,11 +3,8 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-# The name for PyPI (Python Package Index).
-# Hyphens are standard. This is different from your
-# import name, "auto_incorrect", which is defined by the folder structure.
 name = "auto-incorrect"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
   { name = "Ronak Daniel", email = "danielronak8105email.com" },
 ]
@@ -30,11 +27,10 @@ classifiers = [
     "Topic :: Text Processing",
 ]
 
-# This is the most important part:
-# It tells pip what to install alongside your package.
 [project.urls]
 
 [project.dependencies]
 nltk = ">=3.8"
 gensim = ">=4.3"
 ```
+
