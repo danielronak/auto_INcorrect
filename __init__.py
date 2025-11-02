@@ -18,4 +18,5 @@ __all__ = [
 ]
 
 # You can also set the package version here
-__version__ = "0.0.1"
+__version__ = "0.0.2"
+
