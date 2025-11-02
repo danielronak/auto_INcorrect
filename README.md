@@ -1,8 +1,12 @@
-# auto_INcorrect
-A package to intentionally introduce human-like errors into text
-It's a "spell-checker-in-reverse" that, instead of fixing mistakes, artfully creates them.
+autoINcorrect 🤖💥
 
-The Idea:
+"A spell-checker-in-reverse"
+
+Ever stared at your phone, absolutely convinced you typed "meeting," only for it to send "meating"? We've all been victims of autocorrect. But it got me thinking: what if we turned the tables?
+
+This is the autoINcorrect system. It's a "spell-checker-in-reverse" that, instead of fixing mistakes, artfully creates them.
+
+The Idea
 
 This isn't just random chaos. It's a sophisticated system built on a simple, but (if I do say so myself) pretty smart idea: what if, to test how good a "fixer" is, we first built the perfect "breaker"?
 
@@ -18,14 +22,24 @@ Semantic Errors: Simulating "near-miss" malapropisms like banking -> banker usin
 
 Formatting Errors: Simulating real-world punctuation mistakes and random case-flipping.
 
+📦 First-Time Setup
+
+Before you run the script, you'll need the necessary NLP models. Your pipeline.py file includes a helper function to do this automatically.
+
+The first time you import or run the package, it will:
+
+Check for the necessary nltk data (WordNet, Punkt, Tagger).
+
+Download any missing nltk packages.
+
+The first time you use the "Malapropism" module, it will download the glove-wiki-gigaword-100 model (this may take a minute).
+
 🚀 Quick Start & Usage
 
-This package is designed to be simple to use and easy to chain. The two main functions are auto_incorrect (for word errors) and corrupt_format (for punctuation/case errors).
+This package is designed to be simple to use and easy to chain. The main wrapper function is auto_incorrect().
 
 # --- Import the main functions ---
-# (Assuming all functions are in your package)
-
-from auto_incorrect import auto_incorrect, corrupt_format, run_full_corruption
+from autoINcorrect import auto_incorrect, word_error, corrupt_format
 
 my_text = "I am running a test on my banking application for its creative standards. It's a beautiful day to see if your function works correctly."
 
@@ -33,7 +47,8 @@ my_text = "I am running a test on my banking application for its creative standa
 # (This uses all default settings)
 
 print("--- Full Corruption (Default) ---")
-corrupted_text = run_full_corruption(my_text)
+# This is the main wrapper function you'll usually use
+corrupted_text = auto_incorrect(my_text)
 print(corrupted_text)
 
 
@@ -48,7 +63,7 @@ custom_distribution = {
     'brain_fart': 0.3, 
     'malapropism': 0.0
 }
-text_with_word_errors = auto_incorrect(
+text_with_word_errors = word_error(
     my_text, 
     error_rate=0.3, # Corrupt 30% of words
     distribution=custom_distribution
@@ -64,24 +79,17 @@ final_corrupted_text = corrupt_format(
     case_corruption_prob=0.8 # 80% chance to flip a CAPITAL
 )
 
-print(f"Original:\n{my_text}\n")
+print(f"\nOriginal:\n{my_text}\n")
 print(f"Corrupted:\n{final_corrupted_text}")
-
-
-Example Output (Manual Chaining):
-
-Original:
-I am running a test on my banking application for its creative standards. It's a beautiful day to see if your function works correctly.
-
-Corrupted:
-i am runnin a test on my bankin application for its creative standads it's a beutiful day to see if you're function works corectly
 
 
 🛠️ Key Modules
 
-auto_incorrect()
+Your package is split into two main corruption functions, which are combined in the auto_incorrect() wrapper.
 
-This function handles all word-based corruption.
+1. word_error()
+
+This function handles all word-based corruption. It contains three sub-modules:
 
 ⌨️ "Fat Finger" Module: Simulates physical keyboard mistakes.
 
@@ -103,23 +111,19 @@ replace_morphological: decision -> decide (uses NLTK/WordNet)
 
 replace_semantic_neighbor: banking -> banker (uses GloVe embeddings to find related words with the same root).
 
-corrupt_format()
+2. corrupt_format()
 
 This function handles all punctuation and case-based corruption.
 
-Punctuation: Randomly adds, removes, or replaces punctuation marks.
+Punctuation: Randomly adds (word,), removes (word. -> word), or replaces (word? -> word;) punctuation marks.
 
 Case: Randomly flips CAPITAL letters to lowercase based on a probability.
 
 📦 Installation
 
-Currently, you can install this package by cloning the repository:
-
-git clone [https://github.com/YOUR_USERNAME/autoINcorrect.git](https://github.com/YOUR_USERNAME/autoINcorrect.git)
-cd autoINcorrect
-pip install -e .
-
-
-(Coming soon to PyPI!)
-
 pip install autoINcorrect
+
+
+📜 License
+
+This project is licensed under the MIT License.
